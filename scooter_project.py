@@ -38,3 +38,36 @@ except Exception as e:
 #Dock a scooter
 scooter2.dock(station="Station3")
 print(f"Scooter {scooter2.serial} docked at {scooter2.station}")
+
+
+class User:
+    def __init__(self, username, password, age):
+        self.username = username
+        self.password = password
+        self.age = age
+        self.logged_in = False
+
+    def login(self, password):
+        if password != self.password:
+            raise Exception("Incorrect Password")
+        
+        self.logged_in = True
+
+    def logout(self):
+        self.logged_in = False
+        
+
+# Example of instances of the User class
+user1 = User(username="MegH123", password="Google2023", age=34)
+user2 = User(username="userTwo2",password="User123", age=21)
+
+#Login User
+try:
+    user1.login(password="Google2023")
+    print(f"User {user1.username} logged in.")
+except Exception as e:
+    print(f"Error: {e}")
+
+# Logout a user
+user2.logout()
+print(f"User {user2.username} logged out")
